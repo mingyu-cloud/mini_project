@@ -1,0 +1,18 @@
+import pyupbit
+import time
+import datetime
+
+tickers = pyupbit.get_tickers() # ticker : 가상화폐 고유이름
+choice_ticker = input('조회할 티커를 입력하세요: ')
+choice_ticker = choice_ticker.upper()   # 대문자로 통일
+
+if choice_ticker not in tickers:
+    print('없는 티커입니다.')
+else:
+    print('=====조회를 시작합니다.=====')
+
+    while True:
+        price = pyupbit.get_current_price(choice_ticker)
+        now = datetime.datetime.now()   # import datetime 날짜와 시간정보
+        print(now, price)
+        time.sleep(1)   # import time 1초에 한 번
