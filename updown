@@ -1,0 +1,19 @@
+import random
+
+com = random.randint(1, 30)
+cnt=5
+
+for i in range(cnt):
+    user = int(input('1~30 숫자 입력: '))
+
+    if com > user:
+        print('up')
+        cnt-=1
+        print('남은 횟수: ', cnt)
+    elif com < user:
+        print('down')
+        cnt-=1
+        print('남은 횟수: ', cnt)
+    elif com == user:
+        print('정답입니다.')
+        break
