@@ -1,0 +1,23 @@
+import smtplib
+from email.mime.text import MIMEText
+
+sendEmail = "발신자 이메일"
+recvEmail = "수신자 이메일"
+password = "비밀번호"
+
+smtpName = "smtp.naver.com"     # smtp 서버주소
+smtpPort = 587      # smtp 포트번호
+
+text = "파이썬으로 메일 보내기"       # 내용
+msg = MIMEText(text)        # MIMEText(text, _charset = "utf-8")
+
+msg['Subject'] = "파이썬 미니프로젝트"       # 제목
+msg['From'] = sendEmail
+msg['To'] = recvEmail
+print(msg.as_string())
+
+s=smtplib.SMTP( smtpName, smtpPort )    # 메일서버 연결
+s.starttls()    # TLS 보안 처리
+s.login( sendEmail, password )  # 로그인
+s.sendmail( sendEmail, recvEmail, msg.as_string() )     # 메일 전송, 문자열로 반환하여 전송
+s.close()   # smtp 서버 연결 종료
