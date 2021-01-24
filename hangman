@@ -1,10 +1,11 @@
 import random
-words = ['apple', 'banana', ' orange']
+words = ['apple', 'banana', 'orange']
 word = random.choice(words)
 print('answer: ' + word)
 letters = ''
+cnt=5   # 5번 안에 못맞추면 게임오버
 
-while True:
+for i in range(cnt):
     succeed = True
     print()
     for w in word:  # a p p l e
@@ -25,5 +26,12 @@ while True:
 
     if letter in word:
         print('Correct')
+        cnt-=1
+        print('남은 기회: ', cnt)
     else:
         print('Wrong')
+        cnt-=1
+        print('남은 기회: ', cnt)
+
+    if cnt == 0:
+        print('Game Over')
